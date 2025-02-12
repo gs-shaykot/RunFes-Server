@@ -219,6 +219,14 @@ async function run() {
             res.send(result)
         })
 
+        const ResultCollection = client.db("MarathonDB").collection('result');
+
+        app.get('/result', async (req, res) => {
+            const result = await ResultCollection.find().toArray();
+            return res.send(result);
+        });
+
+
 
     } finally {
         // Ensures that the client will close when you finish/error
